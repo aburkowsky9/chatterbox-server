@@ -29,5 +29,10 @@
     "presets": [
       "es2015"
     ]
+  },
+  "dependencies": {
+    "eslint": "^5.6.1",
+    "jquery": "^3.3.1",
+    "underscore": "^1.9.1"
   }
 }
