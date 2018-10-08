@@ -4,38 +4,39 @@ var RoomsView = {
   $select: $('#rooms select'),
 
   initialize: function() {
+  	RoomsView.render();
 
-    RoomsView.$select.on('change', RoomsView.handleChange);
-    RoomsView.$button.on('click', RoomsView.handleClick);
-      },
+  	RoomsView.$select.change(function() {
+  		console.log('room change!');
+  		$('.chat').remove();
+  		MessagesView.render();	
+  	});
+
+  	RoomsView.$button.click(function() {
+  		var newRoom = $('#newRoom').val();
+  		RoomsView.addRoom(newRoom);
+  	});
+  },
 
   render: function() {
-
-    RoomsView.$select.html('');
-    Rooms
-      .items()
-      .each(RoomsView.renderRoom);
-    RoomsView.$select.val(Rooms.selected);
-  },
-
-  renderRoom: function(roomname) {
-    var $option = $('<option>').val(roomname).text(roomname);
-    RoomsView.$select.append($option);
-  },
-
-  handleChange: function(event) {
-    Rooms.selected = RoomsView.$select.val();
-    MessagesView.render();
-  },
-
-  handleClick: function(event) {
-    var roomname = prompt('Enter room name');
-    if (roomname) {
-      Rooms.add(roomname, () => {
-        RoomsView.render();
-        MessagesView.render();
-      });
+  	var rooms = Rooms.getRoomOptions();	
+  	//adds all room options to select drop-down menu
+    
+    if ($('#rooms select option').length === Rooms.allRooms.size) {
+      return;
     }
-      }
+
+  	rooms.forEach(room => {
+  		var $option = $('<option></option').attr('value', room).text(room);
+  		RoomsView.$select.append($option);
+  	});
+  },
+  //render new rooms input by user
+  addRoom: function(roomname) {
+  	var $option = $('<option></option').attr('value', roomname).text(roomname);
+  	RoomsView.$select.prepend($option);
+  	$('#newRoom').val('');
+    Rooms.allRooms.add(roomname);
+  }
 
 };

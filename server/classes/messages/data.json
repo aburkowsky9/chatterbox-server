@@ -1,0 +1,18 @@
+{
+  "results": [
+    {
+      "username": "alex",
+      "roomname": "lobby",
+      "objectId": 0,
+      "text": "daria's in the dog house",
+      "createdAt": "10/7/2018, 6:16:03 PM"
+    },
+    {
+      "username": "alex",
+      "roomname": "new",
+      "objectId": 1,
+      "text": "hey there",
+      "createdAt": "10/7/2018, 6:57:09 PM"
+    }
+  ]
+}

@@ -5,7 +5,7 @@ body {
     font-family: arial, sans-serif;
 }
 
-#main, #chats {
+#main, #chats, #friendList {
     width: 500px;
     margin: auto;
     text-align: left;
@@ -13,6 +13,12 @@ body {
     padding: 50px 60px;
     border: solid #ddd;
     border-width: 0 1px 1px 1px;
+}
+
+#friendBox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 #main h1 {
@@ -69,6 +75,10 @@ form input[type=text] {
     font-weight: 800;
 }
 
+.username:hover {
+    cursor: pointer;
+}
+
 .chat:hover {
     background-color: #ddd;
 }
@@ -88,3 +98,16 @@ form input[type=text] {
     background-color: #0090da;
 }
 
+.accepted {
+    padding: 10px;
+    border: 2px solid black;
+    margin-right: 2px;
+    font-weight: 800;
+    background-color: #eee;
+}
+
+.accepted:hover {
+    color: #fff;
+    background-color: #0090da;
+    font-weight: 800;
+}

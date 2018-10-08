@@ -1,24 +1,19 @@
 var Friends = {
+	initialize: function() {
+		$(document).on('click', '.username', function(event) {
+			var username = event.target.innerHTML;
+			Friends.toggleStatus(username);
+		});
+	}, 
 
+	toggleStatus: function(friend) {
+		if (friend !== App.username) {
+			//add class 'friend' to clicked username container
+			$(`.${friend}`).addClass('friend');
+			
+			var $div = $('<div class="accepted"></div>').text(friend);
+			$('#friendBox').prepend($div);
+		}
+	}
 
-  _data: new Set,
-
-  items: function() {
-    return _.chain([...Friends._data]);
-  },
-
-  isFriend: function(name) {
-    return Friends._data.has(name);
-  },
-
-  toggleStatus: function(name, callback = ()=>{}) {
-    if (Friends._data.has(name)) {
-      Friends._data.delete(name);
-      callback(false);
-    } else {
-      Friends._data.add(name);
-      callback(true);
-    }
-  }
-  
 };
